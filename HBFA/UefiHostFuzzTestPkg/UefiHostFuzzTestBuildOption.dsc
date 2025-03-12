@@ -31,7 +31,7 @@
   GCC:*_LIBFUZZER_*_DLINK2_FLAGS = -fsanitize=fuzzer,address
 
   GCC:*_CLANG8_IA32_CC_FLAGS == -m32 -g -fshort-wchar -fno-strict-aliasing -Wall -idirafter/usr/include -c -include $(DEST_DIR_DEBUG)/AutoGen.h
-  GCC:*_CLANG8_X64_CC_FLAGS == -m64 -g -fshort-wchar -fno-strict-aliasing -Wall -idirafter/usr/include -c -include $(DEST_DIR_DEBUG)/AutoGen.h
+  GCC:*_CLANG8_X64_CC_FLAGS == -fPIC -m64 -g -fshort-wchar -fno-strict-aliasing -Wall -idirafter/usr/include -c -include $(DEST_DIR_DEBUG)/AutoGen.h
   GCC:*_CLANG8_X64_CC_FLAGS = "-DNO_MSABI_VA_FUNCS=TRUE"
 
   GCC:*_CLANG8_*_CC_FLAGS = -O1 -fsanitize=address -fprofile-arcs -ftest-coverage 
@@ -123,7 +123,7 @@
   GCC:*_LIBFUZZER_*_DLINK2_FLAGS = -fsanitize=fuzzer,address
 
   GCC:*_CLANG8_IA32_CC_FLAGS == -m32 -g -fshort-wchar -fno-strict-aliasing -Wall -idirafter/usr/include -c -include $(DEST_DIR_DEBUG)/AutoGen.h
-  GCC:*_CLANG8_X64_CC_FLAGS == -m64 -g -fshort-wchar -fno-strict-aliasing -Wall -idirafter/usr/include -c -include $(DEST_DIR_DEBUG)/AutoGen.h
+  GCC:*_CLANG8_X64_CC_FLAGS == -fPIC -m64 -g -fshort-wchar -fno-strict-aliasing -Wall -idirafter/usr/include -c -include $(DEST_DIR_DEBUG)/AutoGen.h
   GCC:*_CLANG8_X64_CC_FLAGS = "-DNO_MSABI_VA_FUNCS=TRUE"
 
   GCC:*_CLANG8_*_CC_FLAGS = -O1 -fsanitize=address -fprofile-arcs -ftest-coverage 
