@@ -31,11 +31,11 @@
   GCC:*_LIBFUZZER_*_DLINK2_FLAGS = -fsanitize=fuzzer,address
 
   GCC:*_CLANG8_IA32_CC_FLAGS == -m32 -g -fshort-wchar -fno-strict-aliasing -Wall -idirafter/usr/include -c -include $(DEST_DIR_DEBUG)/AutoGen.h
-  GCC:*_CLANG8_X64_CC_FLAGS == -fPIC -m64 -g -fshort-wchar -fno-strict-aliasing -Wall -idirafter/usr/include -c -include $(DEST_DIR_DEBUG)/AutoGen.h
+  GCC:*_CLANG8_X64_CC_FLAGS == -m64 -g -fshort-wchar -fno-strict-aliasing -Wall -idirafter/usr/include -c -include $(DEST_DIR_DEBUG)/AutoGen.h
   GCC:*_CLANG8_X64_CC_FLAGS = "-DNO_MSABI_VA_FUNCS=TRUE"
 
-  GCC:*_CLANG8_*_CC_FLAGS = -O1 -fsanitize=address -fprofile-arcs -ftest-coverage 
-  GCC:*_CLANG8_*_DLINK2_FLAGS = -fsanitize=address --coverage
+  GCC:*_CLANG8_*_CC_FLAGS = -O1 -fPIC
+  GCC:*_CLANG8_*_DLINK2_FLAGS =
   GCC:*_CLANGWIN_IA32_DLINK_FLAGS == /out:"$(BIN_DIR)\$(BASE_NAME).exe" /base:0x10000000 /pdb:"$(BIN_DIR)\$(BASE_NAME).pdb" /LIBPATH:"$(VCINSTALLDIR)\Lib" /LIBPATH:"$(VCINSTALLDIR)\PlatformSdk\Lib" /LIBPATH:"%UniversalCRTSdkDir%lib\%UCRTVersion%\ucrt\x86" /LIBPATH:"%WindowsSdkDir%lib\%WindowsSDKLibVersion%\um\x86" /NOLOGO /SUBSYSTEM:CONSOLE /NODEFAULTLIB /IGNORE:4086 /MAP /OPT:REF /DEBUG /MACHINE:I386 /LTCG Kernel32.lib MSVCRTD.lib Gdi32.lib User32.lib Winmm.lib Advapi32.lib
   GCC:*_CLANGWIN_X64_DLINK_FLAGS == /out:"$(BIN_DIR)\$(BASE_NAME).exe" /base:0x10000000 /pdb:"$(BIN_DIR)\$(BASE_NAME).pdb" /LIBPATH:"$(VCINSTALLDIR)\Lib\AMD64" /LIBPATH:"%UniversalCRTSdkDir%lib\%UCRTVersion%\ucrt\x64" /LIBPATH:"%WindowsSdkDir%lib\%WindowsSDKLibVersion%\um\x64" /NOLOGO /SUBSYSTEM:CONSOLE /NODEFAULTLIB /IGNORE:4086 /MAP /OPT:REF /DEBUG /MACHINE:AMD64 /LTCG Kernel32.lib MSVCRTD.lib Gdi32.lib User32.lib Winmm.lib Advapi32.lib
   GCC:*_CLANGWIN_IA32_CC_FLAGS == -m32 -g -fshort-wchar -fno-strict-aliasing -Wall -c -include $(DEST_DIR_DEBUG)\AutoGen.h -D_CRT_SECURE_NO_WARNINGS -Wnonportable-include-path
@@ -123,11 +123,11 @@
   GCC:*_LIBFUZZER_*_DLINK2_FLAGS = -fsanitize=fuzzer,address
 
   GCC:*_CLANG8_IA32_CC_FLAGS == -m32 -g -fshort-wchar -fno-strict-aliasing -Wall -idirafter/usr/include -c -include $(DEST_DIR_DEBUG)/AutoGen.h
-  GCC:*_CLANG8_X64_CC_FLAGS == -fPIC -m64 -g -fshort-wchar -fno-strict-aliasing -Wall -idirafter/usr/include -c -include $(DEST_DIR_DEBUG)/AutoGen.h
+  GCC:*_CLANG8_X64_CC_FLAGS == -m64 -g -fshort-wchar -fno-strict-aliasing -Wall -idirafter/usr/include -c -include $(DEST_DIR_DEBUG)/AutoGen.h
   GCC:*_CLANG8_X64_CC_FLAGS = "-DNO_MSABI_VA_FUNCS=TRUE"
 
-  GCC:*_CLANG8_*_CC_FLAGS = -O1 -fsanitize=address -fprofile-arcs -ftest-coverage 
-  GCC:*_CLANG8_*_DLINK2_FLAGS = -fsanitize=address --coverage
+  GCC:*_CLANG8_*_CC_FLAGS = -O1 -fPIC
+  GCC:*_CLANG8_*_DLINK2_FLAGS =
   
 
   GCC:*_CLANGWIN_IA32_DLINK_FLAGS == /out:"$(BIN_DIR)\$(BASE_NAME).exe" /base:0x10000000 /pdb:"$(BIN_DIR)\$(BASE_NAME).pdb" /LIBPATH:"$(VCINSTALLDIR)\Lib" /LIBPATH:"$(VCINSTALLDIR)\PlatformSdk\Lib" /LIBPATH:"%UniversalCRTSdkDir%lib\%UCRTVersion%\ucrt\x86" /LIBPATH:"%WindowsSdkDir%lib\%WindowsSDKLibVersion%\um\x86" /LIBPATH:"%LLVMx86_PATH%\lib\clang\8.0.0\lib\windows" /NOLOGO /SUBSYSTEM:CONSOLE /IGNORE:4086 /MAP /OPT:REF /DEBUG /MACHINE:I386 /LTCG Kernel32.lib MSVCRTD.lib Gdi32.lib User32.lib Winmm.lib Advapi32.lib clang_rt.asan_dynamic-i386.lib clang_rt.asan_dynamic_runtime_thunk-i386.lib
