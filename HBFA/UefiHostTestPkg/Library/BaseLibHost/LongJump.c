@@ -13,6 +13,12 @@
 #include <setjmp.h>
 #include <Library/BaseLib.h>
 
+#ifdef SUGARMILL
+#define free __sugarmill_free
+
+__attribute__((optnone)) void __sugarmill_free(void *ptr);
+#endif
+
 /**
   Restores the CPU context that was saved with SetJump().
 

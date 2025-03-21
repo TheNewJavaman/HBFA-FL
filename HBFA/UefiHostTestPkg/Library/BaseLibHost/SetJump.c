@@ -13,6 +13,13 @@
 #include <setjmp.h>
 #include <Library/BaseLib.h>
 
+#ifdef SUGARMILL
+#define malloc __sugarmill_malloc
+
+__attribute__((optnone)) void *__sugarmill_malloc(size_t size);
+#endif
+
+
 /**
   Saves the current CPU context that can be restored with a call to LongJump()
   and returns 0.

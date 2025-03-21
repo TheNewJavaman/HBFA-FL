@@ -11,6 +11,13 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 #include <assert.h>
 
 #include <Uefi.h>
+
+#ifdef SUGARMILL
+#define printf __sugarmill_printf
+
+__attribute__((optnone)) int __sugarmill_printf(const char *restrict format, ...);
+#endif
+
 #define MAX_ADDRESS   0xFFFFFFFFFFFFFFFFULL
 VOID *
 EFIAPI

@@ -15,6 +15,12 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 #include <Library/BaseLib.h>
 #include <Library/PrintLib.h>
 
+#ifdef SUGARMILL
+#define printf __sugarmill_printf
+
+__attribute__((optnone)) int __sugarmill_printf(const char *restrict format, ...) {}
+#endif
+
 #ifndef HOST_DEBUG_MESSAGE
 #define HOST_DEBUG_MESSAGE 0
 #endif

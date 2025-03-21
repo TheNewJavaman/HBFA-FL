@@ -327,6 +327,57 @@ NOOPT_CLANG8_X64_DLINK2_FLAGS     = DEF(GCC5_X64_DLINK2_FLAGS) -O0
 
 ####################################################################################
 #
+# Sugarmill
+#
+####################################################################################
+*_SUGARMILL_*_*_FAMILY                = GCC
+*_SUGARMILL_*_MAKE_PATH               = make
+*_SUGARMILL_*_*_DLL                   = ENV(CLANG8_DLL)
+*_SUGARMILL_*_ASL_PATH                = DEF(UNIX_IASL_BIN)
+
+*_SUGARMILL_*_APP_FLAGS               =
+*_SUGARMILL_*_ASL_FLAGS               = DEF(IASL_FLAGS)
+*_SUGARMILL_*_ASL_OUTFLAGS            = DEF(IASL_OUTFLAGS)
+
+##########################
+# SUGARMILL X64 definitions
+##########################
+*_SUGARMILL_X64_OBJCOPY_PATH         = objcopy
+*_SUGARMILL_X64_CC_PATH              = DEF(CLANG8_X64_PREFIX)musl-gcc
+*_SUGARMILL_X64_SLINK_PATH           = DEF(CLANG8_X64_PREFIX)gcc-ar
+*_SUGARMILL_X64_DLINK_PATH           = DEF(CLANG8_X64_PREFIX)musl-gcc
+*_SUGARMILL_X64_ASLDLINK_PATH        = DEF(CLANG8_X64_PREFIX)musl-gcc
+*_SUGARMILL_X64_ASM_PATH             = DEF(CLANG8_X64_PREFIX)musl-gcc
+*_SUGARMILL_X64_PP_PATH              = DEF(CLANG8_X64_PREFIX)musl-gcc
+*_SUGARMILL_X64_VFRPP_PATH           = DEF(CLANG8_X64_PREFIX)musl-gcc
+*_SUGARMILL_X64_ASLCC_PATH           = DEF(CLANG8_X64_PREFIX)musl-gcc
+*_SUGARMILL_X64_ASLPP_PATH           = DEF(CLANG8_X64_PREFIX)musl-gcc
+*_SUGARMILL_X64_RC_PATH              = objcopy
+
+*_SUGARMILL_X64_ASLCC_FLAGS          = DEF(GCC_ASLCC_FLAGS) -m64 -fno-lto DEF(CLANG8_X64_TARGET)
+*_SUGARMILL_X64_ASLDLINK_FLAGS       = DEF(GCC5_IA32_X64_ASLDLINK_FLAGS) -Wl,-m,elf_x86_64
+*_SUGARMILL_X64_ASM_FLAGS            = DEF(GCC5_ASM_FLAGS) -m64 DEF(CLANG8_X64_TARGET)
+*_SUGARMILL_X64_RC_FLAGS             = DEF(GCC_X64_RC_FLAGS)
+*_SUGARMILL_X64_OBJCOPY_FLAGS        =
+*_SUGARMILL_X64_NASM_FLAGS           = -f elf64
+*_SUGARMILL_X64_PP_FLAGS             = DEF(GCC_PP_FLAGS) DEF(CLANG8_X64_TARGET)
+*_SUGARMILL_X64_ASLPP_FLAGS          = DEF(GCC_ASLPP_FLAGS) DEF(CLANG8_X64_TARGET)
+*_SUGARMILL_X64_VFRPP_FLAGS          = DEF(GCC_VFRPP_FLAGS) DEF(CLANG8_X64_TARGET)
+
+DEBUG_SUGARMILL_X64_CC_FLAGS         = DEF(CLANG8_ALL_CC_FLAGS) -m64 "-DEFIAPI=__attribute__((ms_abi))" -mno-red-zone -mcmodel=small -fpie -Oz -flto DEF(CLANG8_X64_TARGET) -g
+DEBUG_SUGARMILL_X64_DLINK_FLAGS      = DEF(GCC5_IA32_X64_DLINK_FLAGS) -flto -Wl,-Oz -Wl,-melf_x86_64 -Wl,--oformat=elf64-x86-64 -Wl,-pie -mcmodel=small
+DEBUG_SUGARMILL_X64_DLINK2_FLAGS     = DEF(GCC5_X64_DLINK2_FLAGS) -O3
+
+RELEASE_SUGARMILL_X64_CC_FLAGS       = DEF(CLANG8_ALL_CC_FLAGS) -m64 "-DEFIAPI=__attribute__((ms_abi))" -mno-red-zone -mcmodel=small -fpie -Oz -flto DEF(CLANG8_X64_TARGET)
+RELEASE_SUGARMILL_X64_DLINK_FLAGS    = DEF(GCC5_IA32_X64_DLINK_FLAGS) -flto -Wl,-Oz -Wl,-melf_x86_64 -Wl,--oformat=elf64-x86-64 -Wl,-pie -mcmodel=small
+RELEASE_SUGARMILL_X64_DLINK2_FLAGS   = DEF(GCC5_X64_DLINK2_FLAGS) -O3
+
+NOOPT_SUGARMILL_X64_CC_FLAGS         = DEF(CLANG8_ALL_CC_FLAGS) -m64 "-DEFIAPI=__attribute__((ms_abi))" -mno-red-zone -mcmodel=small -fpie -O0 DEF(CLANG8_X64_TARGET) -g
+NOOPT_SUGARMILL_X64_DLINK_FLAGS      = DEF(GCC5_IA32_X64_DLINK_FLAGS) -Wl,-O0 -Wl,-melf_x86_64 -Wl,--oformat=elf64-x86-64 -Wl,-pie -mcmodel=small
+NOOPT_SUGARMILL_X64_DLINK2_FLAGS     = DEF(GCC5_X64_DLINK2_FLAGS) -O0
+
+####################################################################################
+#
 # LIBFUZZER - This configuration is used to compile under Linux to produce
 #  PE/COFF binaries using LLVM/Clang 8 with Link Time Optimization enabled
 #

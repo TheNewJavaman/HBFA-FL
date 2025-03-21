@@ -12,6 +12,22 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 #include <Uefi.h>
 
+#ifdef SUGARMILL
+#define assert __sugarmill_assert
+#define free __sugarmill_free
+#define malloc __sugarmill_malloc
+//#define memcpy __sugarmill_memcpy
+//#define memset __sugarmill_memset
+#define realloc __sugarmill_realloc
+
+__attribute__((optnone)) void __sugarmill_assert(int expression) {}
+__attribute__((optnone)) void __sugarmill_free(void *ptr) {}
+__attribute__((optnone)) void *__sugarmill_malloc(size_t size) {}
+//__attribute__((optnone)) void *__sugarmill_memcpy(void *restrict s1, const void *restrict s2, size_t n) {}
+//__attribute__((optnone)) void *__sugarmill_memset(void *s, int c, size_t n) {}
+__attribute__((optnone)) void *__sugarmill_realloc(void *ptr, size_t size) {}
+#endif
+
 #define PAGE_HEAD_PRIVATE_SIGNATURE  SIGNATURE_32 ('P', 'H', 'D', 'R')
 
 typedef struct {

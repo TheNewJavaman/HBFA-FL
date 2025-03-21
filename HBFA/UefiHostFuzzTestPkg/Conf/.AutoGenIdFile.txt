@@ -1,0 +1,3 @@
+Arch=X64
+BuildDir=/home/gpizarro/dev/sugarmill/sugarmill/examples/uefi/Build/UefiHostFuzzTestCasePkg/RELEASE_CLANG8
+PlatformGuid=9497CEE4-EEEB-4B38-B0EF-03E01920F040
